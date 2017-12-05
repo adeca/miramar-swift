@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E340FACC1FCDC651007F06CF /* Miramar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E340FAC21FCDC651007F06CF /* Miramar.framework */; };
+		E340FAD11FCDC651007F06CF /* MiramarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAD01FCDC651007F06CF /* MiramarTests.swift */; };
+		E340FAD31FCDC651007F06CF /* Miramar.h in Headers */ = {isa = PBXBuildFile; fileRef = E340FAC51FCDC651007F06CF /* Miramar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E340FADD1FCDC662007F06CF /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FADC1FCDC662007F06CF /* Variable.swift */; };
+		E340FADF1FCDC66A007F06CF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FADE1FCDC66A007F06CF /* Observable.swift */; };
+		E340FAE11FCDC674007F06CF /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE01FCDC674007F06CF /* Observation.swift */; };
+		E340FAE31FCDC6AD007F06CF /* OptionalConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE21FCDC6AD007F06CF /* OptionalConvertible.swift */; };
+		E340FAE51FCDC6DC007F06CF /* AnyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE41FCDC6DC007F06CF /* AnyObservable.swift */; };
+		E340FAE71FCDC8C0007F06CF /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE61FCDC8C0007F06CF /* BaseTests.swift */; };
+		E340FAE91FCDC90B007F06CF /* XCTest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE81FCDC90B007F06CF /* XCTest+Extensions.swift */; };
+		E340FAEB1FCDD8CA007F06CF /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAEA1FCDD8C9007F06CF /* Disposable.swift */; };
+		E340FAED1FCE2F1F007F06CF /* _ObservationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAEC1FCE2F1E007F06CF /* _ObservationList.swift */; };
+		E340FAF11FCF61DE007F06CF /* AnyObservableValue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAF01FCF61DE007F06CF /* AnyObservableValue+Extensions.swift */; };
+		E340FAF31FCF6E67007F06CF /* Observable+Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAF21FCF6E67007F06CF /* Observable+Caching.swift */; };
+		E340FAFB1FD0C6DE007F06CF /* _Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAFA1FD0C6DE007F06CF /* _Notifier.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E340FACD1FCDC651007F06CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E340FAB91FCDC651007F06CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E340FAC11FCDC651007F06CF;
+			remoteInfo = Miramar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E340FAC21FCDC651007F06CF /* Miramar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Miramar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E340FAC51FCDC651007F06CF /* Miramar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Miramar.h; sourceTree = "<group>"; };
+		E340FAC61FCDC651007F06CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E340FACB1FCDC651007F06CF /* MiramarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiramarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E340FAD01FCDC651007F06CF /* MiramarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiramarTests.swift; sourceTree = "<group>"; };
+		E340FAD21FCDC651007F06CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E340FADC1FCDC662007F06CF /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		E340FADE1FCDC66A007F06CF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		E340FAE01FCDC674007F06CF /* Observation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
+		E340FAE21FCDC6AD007F06CF /* OptionalConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalConvertible.swift; sourceTree = "<group>"; };
+		E340FAE41FCDC6DC007F06CF /* AnyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservable.swift; sourceTree = "<group>"; };
+		E340FAE61FCDC8C0007F06CF /* BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
+		E340FAE81FCDC90B007F06CF /* XCTest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extensions.swift"; sourceTree = "<group>"; };
+		E340FAEA1FCDD8C9007F06CF /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
+		E340FAEC1FCE2F1E007F06CF /* _ObservationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _ObservationList.swift; sourceTree = "<group>"; };
+		E340FAF01FCF61DE007F06CF /* AnyObservableValue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyObservableValue+Extensions.swift"; sourceTree = "<group>"; };
+		E340FAF21FCF6E67007F06CF /* Observable+Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Caching.swift"; sourceTree = "<group>"; };
+		E340FAFA1FD0C6DE007F06CF /* _Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Notifier.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E340FABE1FCDC651007F06CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E340FAC81FCDC651007F06CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E340FACC1FCDC651007F06CF /* Miramar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E340FAB81FCDC651007F06CF = {
+			isa = PBXGroup;
+			children = (
+				E340FAC41FCDC651007F06CF /* Miramar */,
+				E340FACF1FCDC651007F06CF /* MiramarTests */,
+				E340FAC31FCDC651007F06CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E340FAC31FCDC651007F06CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E340FAC21FCDC651007F06CF /* Miramar.framework */,
+				E340FACB1FCDC651007F06CF /* MiramarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E340FAC41FCDC651007F06CF /* Miramar */ = {
+			isa = PBXGroup;
+			children = (
+				E340FAC51FCDC651007F06CF /* Miramar.h */,
+				E340FAC61FCDC651007F06CF /* Info.plist */,
+				E340FAE41FCDC6DC007F06CF /* AnyObservable.swift */,
+				E340FAF01FCF61DE007F06CF /* AnyObservableValue+Extensions.swift */,
+				E340FADC1FCDC662007F06CF /* Variable.swift */,
+				E340FADE1FCDC66A007F06CF /* Observable.swift */,
+				E340FAF21FCF6E67007F06CF /* Observable+Caching.swift */,
+				E340FAE01FCDC674007F06CF /* Observation.swift */,
+				E340FAEA1FCDD8C9007F06CF /* Disposable.swift */,
+				E340FAE21FCDC6AD007F06CF /* OptionalConvertible.swift */,
+				E340FAEC1FCE2F1E007F06CF /* _ObservationList.swift */,
+				E340FAFA1FD0C6DE007F06CF /* _Notifier.swift */,
+			);
+			path = Miramar;
+			sourceTree = "<group>";
+		};
+		E340FACF1FCDC651007F06CF /* MiramarTests */ = {
+			isa = PBXGroup;
+			children = (
+				E340FAD01FCDC651007F06CF /* MiramarTests.swift */,
+				E340FAD21FCDC651007F06CF /* Info.plist */,
+				E340FAE61FCDC8C0007F06CF /* BaseTests.swift */,
+				E340FAE81FCDC90B007F06CF /* XCTest+Extensions.swift */,
+			);
+			path = MiramarTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E340FABF1FCDC651007F06CF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E340FAD31FCDC651007F06CF /* Miramar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E340FAC11FCDC651007F06CF /* Miramar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E340FAD61FCDC651007F06CF /* Build configuration list for PBXNativeTarget "Miramar" */;
+			buildPhases = (
+				E340FABD1FCDC651007F06CF /* Sources */,
+				E340FABE1FCDC651007F06CF /* Frameworks */,
+				E340FABF1FCDC651007F06CF /* Headers */,
+				E340FAC01FCDC651007F06CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Miramar;
+			productName = Miramar;
+			productReference = E340FAC21FCDC651007F06CF /* Miramar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E340FACA1FCDC651007F06CF /* MiramarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E340FAD91FCDC651007F06CF /* Build configuration list for PBXNativeTarget "MiramarTests" */;
+			buildPhases = (
+				E340FAC71FCDC651007F06CF /* Sources */,
+				E340FAC81FCDC651007F06CF /* Frameworks */,
+				E340FAC91FCDC651007F06CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E340FACE1FCDC651007F06CF /* PBXTargetDependency */,
+			);
+			name = MiramarTests;
+			productName = MiramarTests;
+			productReference = E340FACB1FCDC651007F06CF /* MiramarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E340FAB91FCDC651007F06CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Agustín de Cabrera";
+				TargetAttributes = {
+					E340FAC11FCDC651007F06CF = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					E340FACA1FCDC651007F06CF = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E340FABC1FCDC651007F06CF /* Build configuration list for PBXProject "Miramar" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E340FAB81FCDC651007F06CF;
+			productRefGroup = E340FAC31FCDC651007F06CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E340FAC11FCDC651007F06CF /* Miramar */,
+				E340FACA1FCDC651007F06CF /* MiramarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E340FAC01FCDC651007F06CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E340FAC91FCDC651007F06CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E340FABD1FCDC651007F06CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E340FADF1FCDC66A007F06CF /* Observable.swift in Sources */,
+				E340FAEB1FCDD8CA007F06CF /* Disposable.swift in Sources */,
+				E340FAE11FCDC674007F06CF /* Observation.swift in Sources */,
+				E340FAF31FCF6E67007F06CF /* Observable+Caching.swift in Sources */,
+				E340FAE51FCDC6DC007F06CF /* AnyObservable.swift in Sources */,
+				E340FAFB1FD0C6DE007F06CF /* _Notifier.swift in Sources */,
+				E340FAED1FCE2F1F007F06CF /* _ObservationList.swift in Sources */,
+				E340FADD1FCDC662007F06CF /* Variable.swift in Sources */,
+				E340FAE31FCDC6AD007F06CF /* OptionalConvertible.swift in Sources */,
+				E340FAF11FCF61DE007F06CF /* AnyObservableValue+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E340FAC71FCDC651007F06CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E340FAE71FCDC8C0007F06CF /* BaseTests.swift in Sources */,
+				E340FAE91FCDC90B007F06CF /* XCTest+Extensions.swift in Sources */,
+				E340FAD11FCDC651007F06CF /* MiramarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E340FACE1FCDC651007F06CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E340FAC11FCDC651007F06CF /* Miramar */;
+			targetProxy = E340FACD1FCDC651007F06CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E340FAD41FCDC651007F06CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E340FAD51FCDC651007F06CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E340FAD71FCDC651007F06CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Miramar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adc.Miramar;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E340FAD81FCDC651007F06CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Miramar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adc.Miramar;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E340FADA1FCDC651007F06CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MiramarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adc.MiramarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E340FADB1FCDC651007F06CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MiramarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adc.MiramarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E340FABC1FCDC651007F06CF /* Build configuration list for PBXProject "Miramar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E340FAD41FCDC651007F06CF /* Debug */,
+				E340FAD51FCDC651007F06CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E340FAD61FCDC651007F06CF /* Build configuration list for PBXNativeTarget "Miramar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E340FAD71FCDC651007F06CF /* Debug */,
+				E340FAD81FCDC651007F06CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E340FAD91FCDC651007F06CF /* Build configuration list for PBXNativeTarget "MiramarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E340FADA1FCDC651007F06CF /* Debug */,
+				E340FADB1FCDC651007F06CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E340FAB91FCDC651007F06CF /* Project object */;
+}
