@@ -24,4 +24,21 @@ extension Observable {
             value = other.map({ transform($0.value) }) ?? value
         }
     }
+    
+    /// Creates an Observable that will cache the last value of the given object.
+    public convenience init<O: AnyObservableStream>(caching other: O, initial: ValueType) where O.ValueType == ValueType {
+        self.init(caching: other, initial: initial) { $0 }
+    }
+    
+    /// Creates an Observable that will cache the results of applying `transform` to the value
+    /// of the given object.
+    public convenience init<O: AnyObservableStream>(caching other: O, initial: ValueType, _ transform: @escaping (O.ValueType) -> ValueType) {
+        
+        var value = initial
+        self.init({ value })
+        
+        track(other) {
+            value = transform($0)
+        }
+    }
 }

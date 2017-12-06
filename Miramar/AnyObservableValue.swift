@@ -1,10 +1,19 @@
 //
-//  AnyObservableValue+Extensions.swift
+//  AnyObservableValue.swift
 //  Miramar
 //
 //  Created by Agustín de Cabrera on 29/11/17.
 //  Copyright © 2017 Agustín de Cabrera. All rights reserved.
 //
+
+/// Represents objects that hold a value of any type and also allow subscribing to
+/// receive updates when some event occurs.
+///
+/// Users will expect updates to be sent when the internal value changes.
+public protocol AnyObservableValue: AnyObservable {
+    /// The contained value
+    var value: ValueType { get }
+}
 
 //MARK: - Map
 
@@ -59,3 +68,27 @@ extension AnyObservableValue {
         return observable
     }
 }
+
+//MARK: - reduce
+
+extension AnyObservableValue {
+    public func reduce<U>(initial: U, _ transform: @escaping (U, ValueType) -> U) -> Observable<U> {
+        var value = initial
+        return map {
+            value = transform(value, $0)
+            return value
+        }
+    }
+}
+
+//MARK: - stream
+
+extension AnyObservableValue {
+    public func stream() -> Stream<ValueType> {
+        let signal = Stream<ValueType>()
+        
+        signal.track(observe { [weak signal] in signal?.notify($0) })
+        return signal
+    }
+}
+

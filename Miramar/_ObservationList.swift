@@ -43,7 +43,7 @@ extension ObservationList {
         }
     }
     
-    func connect(_ block: @escaping () -> Void) -> Disposable {
+    func observeChange(_ block: @escaping () -> Void) -> Disposable {
         return observe(target: nil) { _ in block() }.disposable
     }
 }

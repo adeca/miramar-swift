@@ -11,6 +11,9 @@
 public final class Variable<T>: Observable<T> {
     //MARK: Public vars
     
+    /// The variable's current value. When this value is modified
+    /// and the `validate` block passes, then all subscribers of
+    /// this object are notified, with the new value as a parameter.
     public override var value: T {
         get { return super.value }
         set { update(value: newValue, notify: true) }

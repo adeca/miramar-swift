@@ -9,6 +9,7 @@
 public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     //MARK: Public vars
     
+    /// The current value of the observable.
     public var value: T {
         return get()
     }
@@ -21,9 +22,9 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     
     /// When called this should return the current value for the observable
     private let get: () -> T
-
-    /// List of current observers
-    private var observers = ObservationList<T>()
+    
+    ///
+    private let signal = Signal<T>()
     
     /// When this is released the object will no longer get notifications
     /// when a dependency is updated
@@ -31,9 +32,13 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
 
     //MARK: Public methods
     
+    convenience init(constant: ValueType) {
+        self.init({ constant })
+    }
+    
     @discardableResult
-    public func observe(_ block: @escaping (T) -> Void) -> Observation {
-        return observers.observe(target: self, block)
+    public func observe(_ handler: @escaping (T) -> Void) -> Observation {
+        return signal.observe(target: self, handler)
     }
     
     //MARK: Internal methods
@@ -43,7 +48,7 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     }
  
     func valueUpdated() {
-        observers.notify(value)
+        signal.notify(value)
     }
     
     func track(_ notifier: Notifier) {
@@ -60,13 +65,24 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     func track(_ notifiers: [Notifier]) {
         self.connection = Disposable(notifiers.flatMap { $0.observeChange(self) })
     }
+    
+    func track(_ observation: Observation) {
+        self.connection = observation.disposable
+    }
+    
+    func track<S: AnyObservableStream>(_ signal: S, _ handler: @escaping (S.ValueType) -> Void) {
+        signal.observe({ [weak self] in
+            handler($0)
+            self?.valueUpdated()
+        })
+    }
 }
 
 extension Observable: Notifier, NotifierTarget {
     //Notifier
     
     func observeChange(_ handler: @escaping () -> Void) -> Disposable? {
-        return observers.connect(handler)
+        return signal.observeChange(handler)
     }
     
     //NotifierTarget

@@ -20,12 +20,3 @@ public protocol AnyObservable: AnyObject {
     @discardableResult
     func observe(_ handler: @escaping (ValueType) -> Void) -> Observation
 }
-
-/// Represents objects that hold a value of any type and also allow subscribing to
-/// receive updates when some event occurs.
-///
-/// Users will expect updates to be sent when the internal value changes.
-public protocol AnyObservableValue: AnyObservable {
-    /// The contained value
-    var value: ValueType { get }
-}
