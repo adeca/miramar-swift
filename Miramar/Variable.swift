@@ -67,7 +67,7 @@ extension Variable where T == Void {
     }
 }
 
-extension Variable where T: OptionalConvertible {
+extension Variable where T: MRMOptionalConvertible {
     /// Creates a new instance with the given value. Subscribers will always
     /// be notified unless both the old and new values are `nil`
     public convenience init(_ value: T) {
@@ -113,7 +113,7 @@ extension Variable where T: Equatable, T: Collection, T.Iterator.Element: Equata
     }
 }
 
-extension Variable where T: OptionalConvertible, T.SomeValue: Equatable {
+extension Variable where T: MRMOptionalConvertible, T.SomeValue: Equatable {
     /// Creates a new instance with the given value. Subscribers will be
     /// notified only if the new value is not equal to the old.
     public convenience init(_ value: T) {

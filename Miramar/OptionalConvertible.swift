@@ -7,12 +7,12 @@
 //
 
 /// A type that can be represented as an `Optional`
-public protocol OptionalConvertible {
+public protocol MRMOptionalConvertible {
     associatedtype SomeValue
     
     var optionalValue: SomeValue? { get }
 }
 
-extension Optional: OptionalConvertible {
+extension Optional: MRMOptionalConvertible {
     public var optionalValue: Wrapped? { return self }
 }
