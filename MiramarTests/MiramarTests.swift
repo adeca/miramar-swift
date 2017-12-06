@@ -18,7 +18,7 @@ class MiramarTests: BaseTestCase {
         callCount = 0
     }
     
-    func thenVariable<T: Equatable>(_ variable: Variable<T>, equals value: T, line: UInt = #line) {
+    func thenVariable<T: Equatable>(_ variable: ObservableValue<T>, equals value: T, line: UInt = #line) {
         XCTAssertEqual(variable.value, value, "the current value should equal '\(value)'", line: line)
     }
     func thenObservableValue<T: Equatable>(_ observable: Observable<T>, equals value: T, line: UInt = #line) {
@@ -38,7 +38,12 @@ class MiramarTests: BaseTestCase {
         XCTAssertEqual(callCount, times, "the observation block should be called \(times) time(s)", line: line)
     }
     
-    func whenObserving<T: AnyObservable>(_ observable: T) -> Observation {
+    func whenObserving<T: AnyObservableValue>(_ observable: T) -> Observation {
+        return observable.observe { _ in
+            self.callCount += 1
+        }
+    }
+    func whenObserving<T: AnyObservableSignal>(_ observable: T) -> Observation {
         return observable.observe { _ in
             self.callCount += 1
         }
@@ -51,7 +56,7 @@ class MiramarTests: BaseTestCase {
         let (value1, value2) = differentValues()
         
         // when creating an observable with a value
-        let variable: Variable<ValueType> = Variable(value1, validate: {_,_ in true })
+        let variable: ObservableValue<ValueType> = ObservableValue(value1, validate: {_,_ in true })
         let observable: Observable<ValueType> = variable
         
         thenVariable(variable, equals: value1)
@@ -66,7 +71,7 @@ class MiramarTests: BaseTestCase {
     func testObservation() {
         // given two different values and a Variable
         let (value1, value2) = differentValues()
-        let variable = Variable(value1, validate: {_,_ in true })
+        let variable = ObservableValue(value1, validate: {_,_ in true })
         
         // given an observation on the variable
         let observation = whenObserving(variable)
@@ -81,11 +86,11 @@ class MiramarTests: BaseTestCase {
     func testRetain() {
         let value = singleValue()
         // given a weak reference to a Variable
-        weak var weakVariable: Variable<ValueType>?
+        weak var weakVariable: ObservableValue<ValueType>?
         
         // when creating a Variable and assigning it to the weak reference
         do {
-            let variable = Variable(value)
+            let variable = ObservableValue(value)
             weakVariable = variable
             XCTAssertNotNil(weakVariable)
             thenVariable(variable, equals: value)
@@ -98,13 +103,13 @@ class MiramarTests: BaseTestCase {
     func testRetainObservable() {
         let value = singleValue()
         // given a weak reference to a Variable and a strong reference to an observable
-        weak var weakVariable: Variable<ValueType>?
+        weak var weakVariable: ObservableValue<ValueType>?
         var observable: Observable<ValueType>?
         
         // when creating a Variable and assigning it's `observable` property to the
         // strong reference
         do {
-            let variable = Variable(value)
+            let variable = ObservableValue(value)
             weakVariable = variable
             XCTAssertNotNil(weakVariable)
             observable = variable
@@ -125,13 +130,13 @@ class MiramarTests: BaseTestCase {
     func testRetainObservation() {
         let value = singleValue()
         // given a weak reference to a Variable and a strong reference to an observation
-        weak var weakVariable: Variable<ValueType>?
+        weak var weakVariable: ObservableValue<ValueType>?
         var observation: Observation?
         
         // when creating a Variable and observing it and assigning the observation to
         // the strong reference
         do {
-            let variable = Variable(value)
+            let variable = ObservableValue(value)
             weakVariable = variable
             XCTAssertNotNil(weakVariable)
             observation = variable.observe { _ in }
@@ -151,13 +156,13 @@ class MiramarTests: BaseTestCase {
     func testRetainObservationWithoutRemoving() {
         let value = singleValue()
         // given a weak reference to a Variable and a strong reference to an observation
-        weak var weakVariable: Variable<ValueType>?
+        weak var weakVariable: ObservableValue<ValueType>?
         var observation: Observation?
         
         // when creating a Variable and observing it and assigning the observation to
         // the strong reference
         do {
-            let variable = Variable(value)
+            let variable = ObservableValue(value)
             weakVariable = variable
             XCTAssertNotNil(weakVariable)
             observation = variable.observe { _ in }
@@ -176,10 +181,10 @@ class MiramarTests: BaseTestCase {
     
     func testRetainDisposable() {
         let value = singleValue()
-        weak var weakVariable: Variable<ValueType>?
+        weak var weakVariable: ObservableValue<ValueType>?
         var disposable: Disposable?
         do {
-            let variable = Variable(value)
+            let variable = ObservableValue(value)
             weakVariable = variable
             XCTAssertNotNil(weakVariable)
             disposable = variable.observe { _ in }.disposable
@@ -201,7 +206,7 @@ class MiramarTests: BaseTestCase {
     func testMapValue() {
         let (value1, value2) = differentValues()
         
-        let variable = Variable(value1)
+        let variable = ObservableValue(value1)
         thenVariable(variable, equals: value1)
         
         let mapped = variable.map { $0 + $0 }
@@ -218,7 +223,7 @@ class MiramarTests: BaseTestCase {
     func testMapObservation() {
         // given two different values and a Variable
         let (value1, value2) = differentValues()
-        let variable = Variable(value1, validate: {_,_ in true })
+        let variable = ObservableValue(value1, validate: {_,_ in true })
         var observation: Observation?
         
         do {
@@ -237,7 +242,7 @@ class MiramarTests: BaseTestCase {
         let value = singleValue()
         // given a weak reference to a Variable, a weak reference to an observable and
         // a strong reference to an observation
-        weak var weakVariable: Variable<ValueType>?
+        weak var weakVariable: ObservableValue<ValueType>?
         var mappedObservation: Observation?
         weak var weakMappedObservable: Observable<ValueType>?
         
@@ -245,7 +250,7 @@ class MiramarTests: BaseTestCase {
         // to a weak reference, observing the mapped observable and assigning the
         // observation to the strong reference
         do {
-            let variable = Variable(value)
+            let variable = ObservableValue(value)
             weakVariable = variable
             XCTAssertNotNil(weakVariable)
             
@@ -276,8 +281,8 @@ class MiramarTests: BaseTestCase {
     func testCombineValue() {
         let (value1, value2) = differentValues()
         
-        let variable1 = Variable(value1)
-        let variable2 = Variable(value2)
+        let variable1 = ObservableValue(value1)
+        let variable2 = ObservableValue(value2)
         
         let combined = variable1.combine(variable2)
         thenObservableValue(combined, equals: (value1, value2))
@@ -289,8 +294,8 @@ class MiramarTests: BaseTestCase {
     func testCombineObservation() {
         let (value1, value2) = differentValues()
         
-        let variable1 = Variable(value1, validate: {_,_ in true })
-        let variable2 = Variable(value2, validate: {_,_ in true })
+        let variable1 = ObservableValue(value1, validate: {_,_ in true })
+        let variable2 = ObservableValue(value2, validate: {_,_ in true })
         var observation: Observation?
         
         do {
@@ -312,9 +317,9 @@ class MiramarTests: BaseTestCase {
     func testFlatMapValue() {
         let (value1, value2, value3) = differentValues3()
         
-        let source = Variable(true)
-        let variable1 = Variable(value1)
-        let variable2 = Variable(value2)
+        let source = ObservableValue(true)
+        let variable1 = ObservableValue(value1)
+        let variable2 = ObservableValue(value2)
         
         let mapped = source.flatMap { bool in
             bool ? variable1 : variable2
@@ -360,14 +365,14 @@ class MiramarTests: BaseTestCase {
     func testFlatMapRetain() {
         let (value1, value2) = differentValues()
         
-        weak var weakVariable1: Variable<ValueType>?
-        weak var weakVariable2: Variable<ValueType>?
+        weak var weakVariable1: ObservableValue<ValueType>?
+        weak var weakVariable2: ObservableValue<ValueType>?
         weak var weakMapped: Observable<ValueType>?
         var observation: Observation?
         
         do {
-            let variable1 = Variable(value1, validate: {_,_ in true })
-            let variable2 = Variable(value2, validate: {_,_ in true })
+            let variable1 = ObservableValue(value1, validate: {_,_ in true })
+            let variable2 = ObservableValue(value2, validate: {_,_ in true })
             
             weakVariable1 = variable1
             XCTAssertNotNil(weakVariable1)
@@ -398,7 +403,7 @@ class MiramarTests: BaseTestCase {
         XCTAssertNil(weakVariable2)
         XCTAssertNil(weakMapped)
     }
-    
+    /*
     func testCachingRetain() {
         let value = singleValue()
         
@@ -519,7 +524,7 @@ class MiramarTests: BaseTestCase {
         XCTAssertNotNil(cached)
         thenObservableValue(cached!, equals: value2 + value2)
     }
-    
+    */
     //MARK: Helpers
     
     func singleValue() -> ValueType {

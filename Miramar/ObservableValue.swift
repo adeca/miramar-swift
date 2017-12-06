@@ -8,7 +8,7 @@
 
 /// An object that holds a Value of any type and also allows subscribing to
 /// receive updates when this value changes.
-public final class Variable<T>: Observable<T> {
+public final class ObservableValue<T>: Observable<T> {
     //MARK: Public vars
     
     /// The variable's current value. When this value is modified
@@ -60,14 +60,14 @@ public final class Variable<T>: Observable<T> {
 
 //MARK: - Convenience Extensions
 
-extension Variable where T == Void {
+extension ObservableValue where T == Void {
     /// Creates a new instance.
     public convenience init() {
         self.init(())
     }
 }
 
-extension Variable where T: MRMOptionalConvertible {
+extension ObservableValue where T: MRMOptionalConvertible {
     /// Creates a new instance with the given value. Subscribers will always
     /// be notified unless both the old and new values are `nil`
     public convenience init(_ value: T) {
@@ -78,7 +78,7 @@ extension Variable where T: MRMOptionalConvertible {
     }
 }
 
-extension Variable where T: Equatable {
+extension ObservableValue where T: Equatable {
     /// Creates a new instance with the given value. Subscribers will be
     /// notified only if the new value is not equal to the old.
     public convenience init(_ value: T) {
@@ -89,7 +89,7 @@ extension Variable where T: Equatable {
     }
 }
 
-extension Variable where T: Collection, T.Iterator.Element: Equatable {
+extension ObservableValue where T: Collection, T.Iterator.Element: Equatable {
     /// Creates a new instance with the given value. Subscribers will be
     /// notified only if the new value is not equal to the old.
     public convenience init(_ value: T) {
@@ -102,7 +102,7 @@ extension Variable where T: Collection, T.Iterator.Element: Equatable {
 }
 
 // * resolve ambiguity between less-specific extensions that could conflict
-extension Variable where T: Equatable, T: Collection, T.Iterator.Element: Equatable {
+extension ObservableValue where T: Equatable, T: Collection, T.Iterator.Element: Equatable {
     /// Creates a new instance with the given value. Subscribers will be
     /// notified only if the new value is not equal to the old.
     public convenience init(_ value: T) {
@@ -113,7 +113,7 @@ extension Variable where T: Equatable, T: Collection, T.Iterator.Element: Equata
     }
 }
 
-extension Variable where T: MRMOptionalConvertible, T.SomeValue: Equatable {
+extension ObservableValue where T: MRMOptionalConvertible, T.SomeValue: Equatable {
     /// Creates a new instance with the given value. Subscribers will be
     /// notified only if the new value is not equal to the old.
     public convenience init(_ value: T) {

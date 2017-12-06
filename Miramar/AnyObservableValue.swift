@@ -7,12 +7,26 @@
 //
 
 /// Represents objects that hold a value of any type and also allow subscribing to
-/// receive updates when some event occurs.
-///
-/// Users will expect updates to be sent when the internal value changes.
-public protocol AnyObservableValue: AnyObservable {
+/// receive updates when the internal value changes.
+public protocol AnyObservableValue: AnyObservable, AnyObject {
+    associatedtype ValueType
+    
     /// The contained value
     var value: ValueType { get }
+    
+    /// Create a subscription to this object, which sohuld call
+    /// this block when the value changes.
+    @discardableResult
+    func observe(_ handler: @escaping (ValueType) -> Void) -> Observation
+}
+
+//MARK: - AnyObservable
+
+extension AnyObservableValue {
+    @discardableResult
+    public func observeChange(_ handler: @escaping () -> Void) -> Observation {
+        return observe { _ in handler() }
+    }
 }
 
 //MARK: - Map
@@ -22,7 +36,7 @@ extension AnyObservableValue {
         let observable = Observable({
             transform(self.value)
         })
-        observable.track(self.notifier)
+        observable.track(self)
         return observable
     }
 }
@@ -38,7 +52,7 @@ extension AnyObservableValue {
         let observable = Observable({
             transform(self.value, other.value)
         })
-        observable.track([self.notifier, other.notifier])
+        observable.track([self, other])
         return observable
     }
 }
@@ -53,13 +67,13 @@ extension AnyObservableValue {
         var _connections: [Disposable?] = []
         let refreshConnection = { [weak observable] in
             _connections.removeAll()
-            if let observable = observable,
-                let connection = _current.notifier.observeChange(observable) {
+            if let observable = observable {
+                let connection = _current.observeChange(observable).disposable
                 _connections.append(connection)
             }
         }
         
-        observable.track(self.notifier) {
+        observable.track(self) {
             _current = transform(self.value)
             refreshConnection()
         }
@@ -81,13 +95,15 @@ extension AnyObservableValue {
     }
 }
 
-//MARK: - stream
+//MARK: - signal
 
 extension AnyObservableValue {
-    public func stream() -> Stream<ValueType> {
-        let signal = Stream<ValueType>()
+    public func signal() -> Signal<ValueType> {
+        let signal = Signal<ValueType>()
         
-        signal.track(observe { [weak signal] in signal?.notify($0) })
+        let observation = observe { [weak signal] in signal?.notify($0) }
+        signal.track(observation)
+        
         return signal
     }
 }

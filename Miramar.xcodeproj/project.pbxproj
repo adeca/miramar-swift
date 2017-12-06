@@ -7,24 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E313DD1B1FD72CFD00C02062 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1A1FD72CFD00C02062 /* Signal.swift */; };
-		E313DD1D1FD749A700C02062 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1C1FD749A700C02062 /* Stream.swift */; };
-		E313DD1F1FD74AB900C02062 /* AnyObservableStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1E1FD74AB900C02062 /* AnyObservableStream.swift */; };
+		E313DD1B1FD72CFD00C02062 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1A1FD72CFD00C02062 /* SignalEmitter.swift */; };
+		E313DD1D1FD749A700C02062 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1C1FD749A700C02062 /* Signal.swift */; };
+		E31E83EE1FD883B10060EAFD /* AnyObservableSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E83ED1FD883B00060EAFD /* AnyObservableSignal.swift */; };
+		E31E83F01FD89C2C0060EAFD /* AnyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E83EF1FD89C2C0060EAFD /* AnyObservable.swift */; };
 		E340FACC1FCDC651007F06CF /* Miramar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E340FAC21FCDC651007F06CF /* Miramar.framework */; };
 		E340FAD11FCDC651007F06CF /* MiramarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAD01FCDC651007F06CF /* MiramarTests.swift */; };
 		E340FAD31FCDC651007F06CF /* Miramar.h in Headers */ = {isa = PBXBuildFile; fileRef = E340FAC51FCDC651007F06CF /* Miramar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E340FADD1FCDC662007F06CF /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FADC1FCDC662007F06CF /* Variable.swift */; };
+		E340FADD1FCDC662007F06CF /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FADC1FCDC662007F06CF /* ObservableValue.swift */; };
 		E340FADF1FCDC66A007F06CF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FADE1FCDC66A007F06CF /* Observable.swift */; };
 		E340FAE11FCDC674007F06CF /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE01FCDC674007F06CF /* Observation.swift */; };
 		E340FAE31FCDC6AD007F06CF /* OptionalConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE21FCDC6AD007F06CF /* OptionalConvertible.swift */; };
-		E340FAE51FCDC6DC007F06CF /* AnyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE41FCDC6DC007F06CF /* AnyObservable.swift */; };
 		E340FAE71FCDC8C0007F06CF /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE61FCDC8C0007F06CF /* BaseTests.swift */; };
 		E340FAE91FCDC90B007F06CF /* XCTest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAE81FCDC90B007F06CF /* XCTest+Extensions.swift */; };
 		E340FAEB1FCDD8CA007F06CF /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAEA1FCDD8C9007F06CF /* Disposable.swift */; };
 		E340FAED1FCE2F1F007F06CF /* _ObservationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAEC1FCE2F1E007F06CF /* _ObservationList.swift */; };
 		E340FAF11FCF61DE007F06CF /* AnyObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAF01FCF61DE007F06CF /* AnyObservableValue.swift */; };
 		E340FAF31FCF6E67007F06CF /* Observable+Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAF21FCF6E67007F06CF /* Observable+Caching.swift */; };
-		E340FAFB1FD0C6DE007F06CF /* _Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FAFA1FD0C6DE007F06CF /* _Notifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,27 +37,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E313DD1A1FD72CFD00C02062 /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
-		E313DD1C1FD749A700C02062 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		E313DD1E1FD74AB900C02062 /* AnyObservableStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservableStream.swift; sourceTree = "<group>"; };
+		E313DD1A1FD72CFD00C02062 /* SignalEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
+		E313DD1C1FD749A700C02062 /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		E31E83ED1FD883B00060EAFD /* AnyObservableSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyObservableSignal.swift; sourceTree = "<group>"; };
+		E31E83EF1FD89C2C0060EAFD /* AnyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservable.swift; sourceTree = "<group>"; };
 		E340FAC21FCDC651007F06CF /* Miramar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Miramar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E340FAC51FCDC651007F06CF /* Miramar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Miramar.h; sourceTree = "<group>"; };
 		E340FAC61FCDC651007F06CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E340FACB1FCDC651007F06CF /* MiramarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiramarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E340FAD01FCDC651007F06CF /* MiramarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiramarTests.swift; sourceTree = "<group>"; };
 		E340FAD21FCDC651007F06CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E340FADC1FCDC662007F06CF /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		E340FADC1FCDC662007F06CF /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 		E340FADE1FCDC66A007F06CF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E340FAE01FCDC674007F06CF /* Observation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
 		E340FAE21FCDC6AD007F06CF /* OptionalConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalConvertible.swift; sourceTree = "<group>"; };
-		E340FAE41FCDC6DC007F06CF /* AnyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservable.swift; sourceTree = "<group>"; };
 		E340FAE61FCDC8C0007F06CF /* BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		E340FAE81FCDC90B007F06CF /* XCTest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extensions.swift"; sourceTree = "<group>"; };
 		E340FAEA1FCDD8C9007F06CF /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
 		E340FAEC1FCE2F1E007F06CF /* _ObservationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _ObservationList.swift; sourceTree = "<group>"; };
 		E340FAF01FCF61DE007F06CF /* AnyObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservableValue.swift; sourceTree = "<group>"; };
 		E340FAF21FCF6E67007F06CF /* Observable+Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Caching.swift"; sourceTree = "<group>"; };
-		E340FAFA1FD0C6DE007F06CF /* _Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Notifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,19 +101,18 @@
 			children = (
 				E340FAC51FCDC651007F06CF /* Miramar.h */,
 				E340FAC61FCDC651007F06CF /* Info.plist */,
-				E340FAE41FCDC6DC007F06CF /* AnyObservable.swift */,
+				E31E83EF1FD89C2C0060EAFD /* AnyObservable.swift */,
 				E340FAF01FCF61DE007F06CF /* AnyObservableValue.swift */,
-				E313DD1E1FD74AB900C02062 /* AnyObservableStream.swift */,
-				E340FADC1FCDC662007F06CF /* Variable.swift */,
+				E31E83ED1FD883B00060EAFD /* AnyObservableSignal.swift */,
+				E340FADC1FCDC662007F06CF /* ObservableValue.swift */,
 				E340FADE1FCDC66A007F06CF /* Observable.swift */,
 				E340FAF21FCF6E67007F06CF /* Observable+Caching.swift */,
-				E313DD1A1FD72CFD00C02062 /* Signal.swift */,
-				E313DD1C1FD749A700C02062 /* Stream.swift */,
+				E313DD1A1FD72CFD00C02062 /* SignalEmitter.swift */,
+				E313DD1C1FD749A700C02062 /* Signal.swift */,
 				E340FAE01FCDC674007F06CF /* Observation.swift */,
 				E340FAEA1FCDD8C9007F06CF /* Disposable.swift */,
 				E340FAE21FCDC6AD007F06CF /* OptionalConvertible.swift */,
 				E340FAEC1FCE2F1E007F06CF /* _ObservationList.swift */,
-				E340FAFA1FD0C6DE007F06CF /* _Notifier.swift */,
 			);
 			path = Miramar;
 			sourceTree = "<group>";
@@ -245,14 +242,13 @@
 				E340FADF1FCDC66A007F06CF /* Observable.swift in Sources */,
 				E340FAEB1FCDD8CA007F06CF /* Disposable.swift in Sources */,
 				E340FAE11FCDC674007F06CF /* Observation.swift in Sources */,
+				E31E83F01FD89C2C0060EAFD /* AnyObservable.swift in Sources */,
 				E340FAF31FCF6E67007F06CF /* Observable+Caching.swift in Sources */,
-				E313DD1B1FD72CFD00C02062 /* Signal.swift in Sources */,
-				E313DD1F1FD74AB900C02062 /* AnyObservableStream.swift in Sources */,
-				E340FAE51FCDC6DC007F06CF /* AnyObservable.swift in Sources */,
-				E340FAFB1FD0C6DE007F06CF /* _Notifier.swift in Sources */,
-				E313DD1D1FD749A700C02062 /* Stream.swift in Sources */,
+				E313DD1B1FD72CFD00C02062 /* SignalEmitter.swift in Sources */,
+				E313DD1D1FD749A700C02062 /* Signal.swift in Sources */,
+				E31E83EE1FD883B10060EAFD /* AnyObservableSignal.swift in Sources */,
 				E340FAED1FCE2F1F007F06CF /* _ObservationList.swift in Sources */,
-				E340FADD1FCDC662007F06CF /* Variable.swift in Sources */,
+				E340FADD1FCDC662007F06CF /* ObservableValue.swift in Sources */,
 				E340FAE31FCDC6AD007F06CF /* OptionalConvertible.swift in Sources */,
 				E340FAF11FCF61DE007F06CF /* AnyObservableValue.swift in Sources */,
 			);

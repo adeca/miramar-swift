@@ -1,18 +1,40 @@
 //
-//  AnyObservableStream.swift
+//  AnyObservableSignal.swift
 //  Miramar
 //
-//  Created by Agustin De Cabrera on 5/12/17.
+//  Created by Agustín de Cabrera on 5/12/17.
 //  Copyright © 2017 Agustín de Cabrera. All rights reserved.
 //
 
-public protocol AnyObservableStream: AnyObservable {}
+/// Represents objects that allow subscribing to
+/// receive updates when some event occurs.
+///
+/// Implementers of this protocol are free to determine when
+/// updates are sent to subscribers.
+public protocol AnyObservableSignal: AnyObservable, AnyObject {
+    associatedtype ValueType
+    
+    /// Create a subscription to this object, which will call
+    /// this block when some event occurs. Returns an object
+    /// that can be used to cancel the subscription.
+    @discardableResult
+    func observe(_ handler: @escaping (ValueType) -> Void) -> Observation
+}
+
+//MARK: - AnyObservable
+
+extension AnyObservableSignal {
+    @discardableResult
+    public func observeChange(_ handler: @escaping () -> Void) -> Observation {
+        return observe { _ in handler() }
+    }
+}
 
 //MARK: - Map
 
-extension AnyObservableStream {
-    public func map<U>(_ transform: @escaping (ValueType) -> U) -> Stream<U> {
-        let signal = Stream<U>()
+extension AnyObservableSignal {
+    public func map<U>(_ transform: @escaping (ValueType) -> U) -> Signal<U> {
+        let signal = Signal<U>()
         signal.track(observe { [weak signal] in
             guard let signal = signal else { return }
             
@@ -30,13 +52,13 @@ public enum Either<T,U> {
     case right(U)
 }
 
-extension AnyObservableStream {
-    public func combine<S: AnyObservableStream>(_ other: S) -> Stream<Either<ValueType, S.ValueType>> {
+extension AnyObservableSignal {
+    public func combine<S: AnyObservableSignal>(_ other: S) -> Signal<Either<ValueType, S.ValueType>> {
         return combine(other) { $0 }
     }
     
-    public func combine<S: AnyObservableStream, V>(_ other: S, _ transform: @escaping (Either<ValueType, S.ValueType>) -> V) -> Stream<V> {
-        let signal = Stream<V>()
+    public func combine<S: AnyObservableSignal, V>(_ other: S, _ transform: @escaping (Either<ValueType, S.ValueType>) -> V) -> Signal<V> {
+        let signal = Signal<V>()
         
         signal.track([
             observe { [weak signal] in
@@ -53,9 +75,9 @@ extension AnyObservableStream {
 
 //MARK: - flatMap
 
-extension AnyObservableStream {
-    public func flatMap<S: AnyObservableStream>(_ transform: @escaping (ValueType) -> S) -> Stream<S.ValueType> {
-        let signal = Stream<S.ValueType>()
+extension AnyObservableSignal {
+    public func flatMap<S: AnyObservableSignal>(_ transform: @escaping (ValueType) -> S) -> Signal<S.ValueType> {
+        let signal = Signal<S.ValueType>()
         
         var _current: S?
         var _connections: [Disposable?] = []
@@ -82,8 +104,8 @@ extension AnyObservableStream {
 
 //MARK: - reduce
 
-extension AnyObservableStream {
-    public func reduce<T>(initial: T, _ transform: @escaping (T, ValueType) -> T) -> Stream<T> {
+extension AnyObservableSignal {
+    public func reduce<T>(initial: T, _ transform: @escaping (T, ValueType) -> T) -> Signal<T> {
         var value = initial
         return map {
             value = transform(value, $0)
@@ -94,7 +116,7 @@ extension AnyObservableStream {
 
 //MARK: - observable
 
-extension AnyObservableStream {
+extension AnyObservableSignal {
     public func observable(initial: ValueType) -> Observable<ValueType> {
         var value = initial
         let observable = Observable({ value })

@@ -24,7 +24,7 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     private let get: () -> T
     
     ///
-    private let signal = Signal<T>()
+    private let signal = SignalEmitter<T>()
     
     /// When this is released the object will no longer get notifications
     /// when a dependency is updated
@@ -51,26 +51,28 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
         signal.notify(value)
     }
     
-    func track(_ notifier: Notifier) {
-        self.connection = notifier.observeChange(self)
-    }
-    
-    func track(_ notifier: Notifier, _ handler: @escaping () -> Void) {
-        self.connection = Disposable([
-            notifier.observeChange(handler),
-            notifier.observeChange(self)
-            ])
-    }
-    
-    func track(_ notifiers: [Notifier]) {
-        self.connection = Disposable(notifiers.flatMap { $0.observeChange(self) })
-    }
-    
     func track(_ observation: Observation) {
-        self.connection = observation.disposable
+        connection += observation.disposable
     }
     
-    func track<S: AnyObservableStream>(_ signal: S, _ handler: @escaping (S.ValueType) -> Void) {
+    func track(_ observable: AnyObservable) {
+        connection += observable.observeChange(self).disposable
+    }
+    
+    func track(_ observables: [AnyObservable]) {
+        connection += Disposable(observables.map {
+            $0.observeChange(self).disposable
+        })
+    }
+    
+    func track(_ observable: AnyObservable, _ handler: @escaping () -> Void) {
+        connection += Disposable([
+            observable.observeChange(handler).disposable,
+            observable.observeChange(self).disposable
+        ])
+    }
+    
+    func track<S: AnyObservableSignal>(_ signal: S, _ handler: @escaping (S.ValueType) -> Void) {
         signal.observe({ [weak self] in
             handler($0)
             self?.valueUpdated()
@@ -78,16 +80,11 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     }
 }
 
-extension Observable: Notifier, NotifierTarget {
-    //Notifier
-    
-    func observeChange(_ handler: @escaping () -> Void) -> Disposable? {
-        return signal.observeChange(handler)
-    }
-    
-    //NotifierTarget
-    
-    func notifierChanged() {
-        valueUpdated()
+extension AnyObservable {
+    @discardableResult
+    func observeChange<T>(_ observable: Observable<T>) -> Observation {
+        return observeChange { [weak observable] in
+            observable?.valueUpdated()
+        }
     }
 }

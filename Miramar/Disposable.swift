@@ -38,3 +38,18 @@ extension Disposable {
         return Disposable([self, other])
     }
 }
+
+public func + (lhs: Disposable, rhs: Disposable) -> Disposable {
+    return lhs.combine(rhs)
+}
+public func += (lhs: inout Disposable, rhs: Disposable) {
+    lhs = lhs + rhs
+}
+
+public func + (lhs: Disposable?, rhs: Disposable) -> Disposable {
+    return lhs?.combine(rhs) ?? rhs
+}
+public func += (lhs: inout Disposable?, rhs: Disposable) {
+    lhs = lhs + rhs
+}
+
