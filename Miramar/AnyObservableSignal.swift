@@ -38,7 +38,7 @@ extension AnyObservableSignal {
         signal.track(observe { [weak signal] in
             guard let signal = signal else { return }
             
-            signal.notify(transform($0))
+            signal.send(transform($0))
         })
         
         return signal
@@ -62,10 +62,10 @@ extension AnyObservableSignal {
         
         signal.track([
             observe { [weak signal] in
-                signal?.notify(transform(.left($0)))
+                signal?.send(transform(.left($0)))
             },
             other.observe { [weak signal] in
-                signal?.notify(transform(.right($0)))
+                signal?.send(transform(.right($0)))
             }
             ])
         
@@ -88,7 +88,7 @@ extension AnyObservableSignal {
                 let current = _current else { return }
             
             let connection = current.observe { [weak signal] in
-                signal?.notify($0)
+                signal?.send($0)
                 }.disposable
             _connections.append(connection)
         }

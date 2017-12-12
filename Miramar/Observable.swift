@@ -48,7 +48,7 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     }
  
     func valueUpdated() {
-        signal.notify(value)
+        signal.send(value)
     }
     
     func track(_ observation: Observation) {

@@ -101,7 +101,7 @@ extension AnyObservableValue {
     public func signal() -> Signal<ValueType> {
         let signal = Signal<ValueType>()
         
-        let observation = observe { [weak signal] in signal?.notify($0) }
+        let observation = observe { [weak signal] in signal?.send($0) }
         signal.track(observation)
         
         return signal

@@ -11,7 +11,7 @@ public class SignalEmitter<T>: Signal<T> {
     
     /// Send an update to all subscribers of this object, with the
     /// given value as a parameter.
-    public override func notify(_ value: T) {
-        super.notify(value)
+    public override func send(_ value: @autoclosure () -> T) {
+        super.send(value)
     }
 }

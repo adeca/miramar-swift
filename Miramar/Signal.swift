@@ -42,8 +42,9 @@ public class Signal<T>: AnyObservableSignal, CustomStringConvertible {
         self.connection = Disposable(observations.map { $0.disposable })
     }
     
-    func notify(_ value: T) {
-        observers.notify(value)
+    func send(_ value: @autoclosure () -> T) {
+        guard !observers.isEmpty else { return }
+        observers.notify(value())
     }
     
     func observe(target: Any?, _ handler: @escaping (T) -> Void) -> Observation {
