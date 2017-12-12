@@ -37,7 +37,15 @@ extension Disposable {
         
         return Disposable([self, other])
     }
+    
+    /// Attach the disposable to a target object, which causes it to remain
+    /// alive until the target is deallocated.
+    func on(_ target: AnyObject) {
+        objc_setAssociatedObject(target, &DisposableTargetKey, self, .OBJC_ASSOCIATION_RETAIN)
+    }
 }
+
+private var DisposableTargetKey: UInt8 = 0
 
 public func + (lhs: Disposable, rhs: Disposable) -> Disposable {
     return lhs.combine(rhs)

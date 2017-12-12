@@ -25,6 +25,7 @@ public final class Observation {
         self.target = target
     }
     
+    /// Call this method to stop receiving updates.
     public func remove() {
         removalBlock?()
         removalBlock = nil
@@ -37,5 +38,11 @@ extension Observation {
     /// cancel the Observation during it's deallocation.
     public var disposable: Disposable {
         return Disposable { self.remove() }
+    }
+    
+    /// Attach the observation to a target object, which causes the
+    /// observation to remain active until the target is deallocated.
+    func target(_ target: AnyObject) {
+        disposable.on(target)
     }
 }
