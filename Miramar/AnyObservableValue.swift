@@ -39,6 +39,10 @@ extension AnyObservableValue {
         observable.track(self)
         return observable
     }
+    
+    public func map<U>(_ keyPath: KeyPath<ValueType, U>) -> Observable<U> {
+        return map { $0[keyPath: keyPath] }
+    }
 }
 
 //MARK: - Combine

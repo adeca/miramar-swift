@@ -58,6 +58,20 @@ public final class ObservableValue<T>: Observable<T> {
     }
 }
 
+extension ObservableValue {
+    public convenience init<U: AnyObject>(source: U, keyPath: WritableKeyPath<U, T>) {
+        var source = source
+        self.init(get: { source[keyPath: keyPath] },
+                  set: { source[keyPath: keyPath] = $0 })
+    }
+}
+
+extension ObservableValue where T: AnyObject {
+    public func keyPath<U>(_ keyPath: WritableKeyPath<T, U>) -> ObservableValue<U> {
+        return ObservableValue<U>(source: value, keyPath: keyPath)
+    }
+}
+
 //MARK: - Convenience Extensions
 
 extension ObservableValue where T == Void {

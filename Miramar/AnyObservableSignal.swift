@@ -43,6 +43,10 @@ extension AnyObservableSignal {
         
         return signal
     }
+    
+    public func map<U>(_ keyPath: KeyPath<ValueType, U>) -> Signal<U> {
+        return map { $0[keyPath: keyPath] }
+    }
 }
 
 //MARK: - Combine
