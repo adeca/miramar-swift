@@ -23,8 +23,8 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     /// When called this should return the current value for the observable
     private let get: () -> T
     
-    ///
-    private let signal = SignalSource<T>()
+    /// List of current observers
+    private let observers = ObservationList<T>()
     
     /// When this is released the object will no longer get notifications
     /// when a dependency is updated
@@ -38,7 +38,7 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     
     @discardableResult
     public func observe(_ handler: @escaping (T) -> Void) -> Observation {
-        return signal.observe(target: self, handler)
+        return observers.observe(target: self, handler)
     }
     
     //MARK: Internal methods
@@ -48,7 +48,8 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     }
  
     func valueUpdated() {
-        signal.send(value)
+        guard !observers.isEmpty else { return }
+        observers.notify(value)
     }
     
     func track(_ observation: Observation) {
