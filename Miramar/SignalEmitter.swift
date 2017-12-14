@@ -15,3 +15,9 @@ public class SignalEmitter<T>: Signal<T> {
         super.send(value)
     }
 }
+
+extension SignalEmitter where T == Void {
+    func send() {
+        send(())
+    }
+}

@@ -48,12 +48,6 @@ extension ObservationList {
     }
 }
 
-extension ObservationList where T == Void {
-    func notify() {
-        notify(())
-    }
-}
-
 // Opaque wrappers over closure instances
 final class Box<T> {
     var internalValue: T
