@@ -42,7 +42,7 @@ extension Observation {
     
     /// Attach the observation to a target object, which causes the
     /// observation to remain active until the target is deallocated.
-    func target(_ target: AnyObject) {
+    public func target(_ target: AnyObject) {
         disposable.on(target)
     }
 }
