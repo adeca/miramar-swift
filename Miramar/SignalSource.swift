@@ -1,12 +1,12 @@
 //
-//  SignalEmitter.swift
+//  SignalSource.swift
 //  Miramar
 //
 //  Created by Agustín de Cabrera on 5/12/17.
 //  Copyright © 2017 Agustín de Cabrera. All rights reserved.
 //
 
-public class SignalEmitter<T>: Signal<T> {
+public class SignalSource<T>: Signal<T> {
     //MARK: Public methods
     
     /// Send an update to all subscribers of this object, with the
@@ -16,7 +16,7 @@ public class SignalEmitter<T>: Signal<T> {
     }
 }
 
-extension SignalEmitter where T == Void {
+extension SignalSource where T == Void {
     func send() {
         send(())
     }

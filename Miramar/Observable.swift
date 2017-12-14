@@ -24,7 +24,7 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
     private let get: () -> T
     
     ///
-    private let signal = SignalEmitter<T>()
+    private let signal = SignalSource<T>()
     
     /// When this is released the object will no longer get notifications
     /// when a dependency is updated

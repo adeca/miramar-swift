@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E313DD1B1FD72CFD00C02062 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1A1FD72CFD00C02062 /* SignalEmitter.swift */; };
+		E313DD1B1FD72CFD00C02062 /* SignalSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1A1FD72CFD00C02062 /* SignalSource.swift */; };
 		E313DD1D1FD749A700C02062 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313DD1C1FD749A700C02062 /* Signal.swift */; };
 		E31E83EE1FD883B10060EAFD /* AnyObservableSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E83ED1FD883B00060EAFD /* AnyObservableSignal.swift */; };
 		E31E83F01FD89C2C0060EAFD /* AnyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E83EF1FD89C2C0060EAFD /* AnyObservable.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E313DD1A1FD72CFD00C02062 /* SignalEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
+		E313DD1A1FD72CFD00C02062 /* SignalSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalSource.swift; sourceTree = "<group>"; };
 		E313DD1C1FD749A700C02062 /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		E31E83ED1FD883B00060EAFD /* AnyObservableSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyObservableSignal.swift; sourceTree = "<group>"; };
 		E31E83EF1FD89C2C0060EAFD /* AnyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservable.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				E31E83ED1FD883B00060EAFD /* AnyObservableSignal.swift */,
 				E340FADC1FCDC662007F06CF /* ObservableValue.swift */,
 				E340FADE1FCDC66A007F06CF /* Observable.swift */,
-				E313DD1A1FD72CFD00C02062 /* SignalEmitter.swift */,
+				E313DD1A1FD72CFD00C02062 /* SignalSource.swift */,
 				E313DD1C1FD749A700C02062 /* Signal.swift */,
 				E340FAE01FCDC674007F06CF /* Observation.swift */,
 				E340FAEA1FCDD8C9007F06CF /* Disposable.swift */,
@@ -240,7 +240,7 @@
 				E340FAEB1FCDD8CA007F06CF /* Disposable.swift in Sources */,
 				E340FAE11FCDC674007F06CF /* Observation.swift in Sources */,
 				E31E83F01FD89C2C0060EAFD /* AnyObservable.swift in Sources */,
-				E313DD1B1FD72CFD00C02062 /* SignalEmitter.swift in Sources */,
+				E313DD1B1FD72CFD00C02062 /* SignalSource.swift in Sources */,
 				E313DD1D1FD749A700C02062 /* Signal.swift in Sources */,
 				E31E83EE1FD883B10060EAFD /* AnyObservableSignal.swift in Sources */,
 				E340FAED1FCE2F1F007F06CF /* _ObservationList.swift in Sources */,
