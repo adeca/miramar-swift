@@ -104,6 +104,10 @@ extension AnyObservableSignal {
         
         return signal
     }
+    
+    public func flatMap<O: AnyObservableValue>(_ transform: @escaping (ValueType) -> O) -> Signal<O.ValueType> {
+        return flatMap { transform($0).signal() }
+    }
 }
 
 //MARK: - reduce
