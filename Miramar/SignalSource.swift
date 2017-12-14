@@ -17,7 +17,7 @@ public class SignalSource<T>: Signal<T> {
 }
 
 extension SignalSource where T == Void {
-    func send() {
+    public func send() {
         send(())
     }
 }
