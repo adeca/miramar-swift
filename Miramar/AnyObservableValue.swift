@@ -99,6 +99,25 @@ extension AnyObservableValue {
     }
 }
 
+//MARK: - filter
+
+extension AnyObservableValue {
+    public func filter(_ isIncluded: @escaping (_ old: ValueType, _ new: ValueType) -> Bool) -> Observable<ValueType> {
+        var previous = self.value
+        
+        let observable = Observable({ previous })
+        observable.track(observe { [weak observable] new in
+            defer { previous = new }
+            
+            guard let observable = observable,
+                isIncluded(previous, new) else { return }
+            
+            observable.valueUpdated()
+        })
+        return observable
+    }
+}
+
 //MARK: - signal
 
 extension AnyObservableValue {

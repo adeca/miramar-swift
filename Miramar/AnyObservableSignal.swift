@@ -118,6 +118,23 @@ extension AnyObservableSignal {
     }
 }
 
+//MARK: - filter
+
+extension AnyObservableSignal {
+    public func filter(_ isIncluded: @escaping (ValueType) -> Bool) -> Signal<ValueType> {
+        let signal = Signal<ValueType>()
+        
+        signal.track(observe { [weak signal] in
+            guard let signal = signal,
+                isIncluded($0) else { return }
+            
+            signal.send($0)
+        })
+        
+        return signal
+    }
+}
+
 //MARK: - observable
 
 extension AnyObservableSignal {
