@@ -32,7 +32,7 @@ public class Observable<T>: AnyObservableValue, CustomStringConvertible {
 
     //MARK: Public methods
     
-    convenience init(constant: ValueType) {
+    public convenience init(constant: ValueType) {
         self.init({ constant })
     }
     
