@@ -22,7 +22,7 @@ public final class ObservableValue<T>: Observable<T> {
     //MARK: Private vars
     
     /// Optional validation before notifying a change in value
-    private let validate: (_ from: T, _ to: T) -> Bool
+    private var validateChange: ((_ from: T, _ to: T) -> Bool)?
     
     /// Modify the underlying value
     private let set: (T) -> Void
@@ -31,19 +31,35 @@ public final class ObservableValue<T>: Observable<T> {
 
     /// Creates a new instance with the given value and a validation block used to
     /// determine if subscribers should be notified when the value is changed.
-    public init(_ value: T, validate: @escaping (_ from: T, _ to: T) -> Bool) {
-        self.validate = validate
-        
+    ///
+    /// If the validation block is not provided subscribers will always be
+    /// notified when the value is changed.
+    public convenience init(_ value: T, validate: ((_ from: T, _ to: T) -> Bool)? = nil) {
         var _value = value
-        self.set = { _value = $0 }
-
-        super.init({ _value })
+        
+        self.init(get: { _value },
+                  set: { _value = $0 })
     }
     
-    /// Creates a new instance with the given value. Subscribers will always be
-    /// notified when the value is changed.
-    public convenience init(_ value: T) {
-        self.init(value, validate: { _,_ in true })
+    ///
+    public init(get: @escaping () -> T,
+                set: @escaping (T) -> Void) {
+        self.set = set
+        super.init(get)
+    }
+    
+    ///
+    public func change(_ by: (inout T) -> ()) {
+        var copy = value
+        by(&copy)
+        value = copy
+    }
+    
+    ///
+    @discardableResult
+    public func validate(_ validate: @escaping (_ from: T, _ to: T) -> Bool) -> Self {
+        self.validateChange = validate
+        return self
     }
     
     //MARK: Private methods
@@ -52,7 +68,7 @@ public final class ObservableValue<T>: Observable<T> {
         let oldValue = self.value
         set(value)
         
-        if notify && validate(oldValue, value) {
+        if notify && (validateChange == nil || validateChange!(oldValue, value)) {
             valueUpdated()
         }
     }
