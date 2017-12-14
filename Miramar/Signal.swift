@@ -16,7 +16,7 @@ public class Signal<T>: AnyObservableSignal, CustomStringConvertible {
     //MARK: Private var
     
     /// List of current observers
-    private var observers = ObservationList<T>()
+    private let observers = ObservationList<T>()
     
     /// When this is released the object will no longer get notifications
     /// when a dependency is updated
