@@ -97,6 +97,10 @@ extension AnyObservableValue {
             return value
         }
     }
+    
+    public func reduce(_ transform: @escaping (ValueType, ValueType) -> ValueType) -> Observable<ValueType> {
+        return reduce(initial: self.value, transform)
+    }
 }
 
 //MARK: - filter
@@ -130,4 +134,3 @@ extension AnyObservableValue {
         return signal
     }
 }
-
