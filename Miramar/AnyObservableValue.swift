@@ -134,3 +134,15 @@ extension AnyObservableValue {
         return signal
     }
 }
+
+//MARK: - operators
+
+public func && <A, B>(lhs: A, rhs: B) -> Observable<Bool>
+    where A: AnyObservableValue, A.ValueType == Bool, B: AnyObservableValue, B.ValueType == Bool {
+    return lhs.combine(rhs) { $0 && $1 }.filter(!=)
+}
+
+public func || <A, B>(lhs: A, rhs: B) -> Observable<Bool>
+    where A: AnyObservableValue, A.ValueType == Bool, B: AnyObservableValue, B.ValueType == Bool {
+    return lhs.combine(rhs) { $0 || $1 }.filter(!=)
+}
